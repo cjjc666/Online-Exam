@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registration and Logon</title>
+
+<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+
+
+</head>
+<body>
+
+    <div class="main">
+      <div class="container a-container" id="a-container">
+        <form class="form" id="a-form" method="post" th:action="@{/student/reg}">
+          <h2 class="form_title title">Student Registration</h2>
+          <div class="form__icons">
+            <img class="form__icon" th:src="@{/img/1.svg}" src="../static/img/1.svg" alt="">
+            <img class="form__icon" th:src="@{/img/2.svg}" src="../static/img/2.svg">
+          </div>
+          <span class="form__span"><p h2 th:text="${message}"></p></span>
+          <input class="form__input" name="sid" type="text" placeholder="Student Number" required="required">
+          <input class="form__input" name="name" type="text" placeholder="Name" required="required">
+          <input class="form__input" name="school" type="text" placeholder="School" required="required">
+          <input class="form__input" name="college" type="text" placeholder="College" required="required">
+          <input class="form__input" name="grade" type="number" placeholder="Grade" required="required">
+          <input class="form__input" name="classes" type="text" placeholder="Class" required="required">
+          <!--<button class="form__button button submit">Register</button>-->
+          <input type="submit" class="button" value="Register">
+
+        </form>
+      </div>
+      <div class="container b-container" id="b-container">
+        <form class="form" name="rform" id="b-form" method="post" th:action="@{/student/login}">
+          <h2 class="form_title title">Login</h2>
+          <div class="form__icons">
+            <img class="form__icon" th:src="@{/img/3.svg}" src="../static/img/3.svg">
+          </div>
+          <span class="form__span"><p th:text="${message}"></p></span>
+          <input class="form__input" name="sid" type="text" placeholder="Student Number" required="required">
+          <input class="form__input" name="name" type="text" placeholder="Name" required="required">
+          <!--<input class="form__input" name="role" type="radio" checked="checked" required="required">
+          <input class="form__input" name="role" type="radio"  required="required"1>-->
+          <!--<a class="form__link" th:href="@{'/tech'}">Forget the password?</a>-->
+          <a class="form__link" th:href="@{'/tea'}">I am a teacher?</a>
+          <!--<button class="form__button button submit">Login</button>-->
+          <input type="submit" class="button" value="Login" >
+        </form>
+      </div>
+      <div class="switch" id="switch-cnt">
+        <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+          <h2 class="switch__title title">Welcome Back !</h2>
+          <p class="switch__description description">To keep connected with us please login with your personal info</p>
+          <button class="switch__button button switch-btn">Login</button>
+        </div>
+        <div class="switch__container is-hidden" id="switch-c2">
+          <h2 class="switch__title title">Hello Friend !</h2>
+          <p class="switch__description description">Enter your personal details and start journey with us</p>
+          <button class="switch__button button switch-btn">Register</button>
+        </div>
+      </div>
+    </div>
+
+  <script  src="../static/js/Lscript.js" th:src="@{/js/Lscript.js}"></script>
+
+</body>
+</html>
+

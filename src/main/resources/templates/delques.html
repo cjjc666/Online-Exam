@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Delete Question Information</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+
+    <!--Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
+    <!--owl-carousel css-->
+    <link rel="stylesheet" href="../static/css/owl-carousel/owl.carousel.css" th:href="@{/css/owl-carousel/owl.carousel.css}">
+    <link rel="stylesheet" href="../static/css/owl-carousel/owl.theme.css" th:href="@{/css/owl-carousel/owl.theme.css}">
+    <link rel="stylesheet" href="../static/css/owl-carousel/owl.transitions.css" th:href="@{/css/owl-carousel/owl.transitions.css}">
+
+    <!--CSS for Progress Bars-->
+    <link href="../static/css/progress_animate.css" rel="stylesheet" th:href="@{/css/progress_animate.css}" >
+    <link href="../static/css/progress_style.css" rel="stylesheet" th:href="@{/css/progress_animate.css}">
+    <link href="../static/css/progress_responsive.css" th:href="@{/css/progress_responsive.css}" rel="stylesheet">
+
+    <link rel="stylesheet"  href="../static/css/animations.css" th:href="@{/css/animations.css}">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}" >
+    <link rel="stylesheet" href="../static/css/color1.css" th:href="@{/css/color1.css}">
+
+
+
+    <script src="../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" th:src="@{/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js}">
+
+    </script>
+</head>
+
+<body id="page-top" class="index about_body">
+<!-- Preloader -->
+<div class="preloader"></div>
+<header>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a style="display: none" class="navbar-brand page-scroll" href="#page-top"><img src="images/logos/logo.png" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav text-center">
+                    <li><a href="#" th:href="@{'/quescon'}">Back</a></li>
+                    <li><a href="index.html" th:href="@{'/'}">Home</a></li>
+                    <li><a href="aboutus.html">About us</a></li>
+                    <li><a href="services.html" th:href="@{/quescon}">Question Management</a></li>
+                    <li class="logo-holder">
+                        <a href="index.html"><img src="images/logos/logo.png" alt=""></a>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#"><p th:text="|Welcome back! ${session.tname}|"></p></a></li>
+                    <li><a th:href="@{'/exit'}"><P th:text="${exit}"></P></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div id="page_header">
+        <div class="page_title">
+            <h3>Delete Question Information</h3>
+            <ol class="breadcrumb"><li><a href="#"></a>
+                <!--</li><li class="active">About us</li>-->
+            </ol>
+        </div>
+    </div>
+</header>
+<!-- Aboutus page header -->
+
+
+
+
+<!-- Team Section -->
+
+
+<section id="facts" class="fun-facts">
+    <table class="table table-striped table-bordered table-hover table-condensed table-responsive" th:object="${questions}">
+        <caption></caption>
+        <thead>
+        <tr class="active">
+            <th>Question Content</th>
+            <th>Question Answer</th>
+            <th>Delete </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="success" th:each="q:${questions}">
+            <td><p th:text="${q.content}"></p></td>
+            <td><p th:text="${q.answer}"></p></td>
+            <td><a th:href="@{/teacher/deleteques(id=${q.qid})}" onclick="return confirm('Are you sure to delete this Question?')">Delete Questions</a></td>
+        </tr>
+        <!--<tr class="warning">
+            <td>Sachin</td>
+            <td>Mumbai</td>
+            <td>400003</td>
+        </tr>
+        <tr class="danger">
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+        </tr>-->
+        </tbody>
+    </table>
+
+    <div class="modal-footer no-margin-top">
+        <ul class="pagination pull-right no-margin">
+
+            <!-- 首页 -->
+            <li>
+                <a th:href="'/teacher/showques?pageNum=0'">First Page</a>
+            </li>
+
+            <!-- 上一页 -->
+            <li th:if="${questions.hasPrevious()}">
+                <a th:href="'/teacher/showques?pageNum=' + ${questions.previousPageable().getPageNumber()}" th:text="'Previous Page'"></a>
+            </li>
+
+            <!-- 中间页 -->
+            <li th:each="pageNum:${#numbers.sequence(0,questions.getTotalPages() - 1)}">
+                <a th:href="'/teacher/showques?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum ne questions.pageable.getPageNumber()}"></a>
+                <a th:href="'/teacher/showques?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum eq questions.pageable.getPageNumber()}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+            </li>
+
+            <!-- 下一页 -->
+            <li th:if="${questions.hasNext()}">
+                <a th:href="'/teacher/showques?pageNum=' + ${questions.nextPageable().getPageNumber()}" th:text="'Next Page'"></a>
+            </li>
+
+            <!-- 尾页 -->
+            <li>
+                <a th:href="'/teacher/showques?pageNum=' + ${questions.getTotalPages() - 1}">Last Page</a>
+            </li>
+
+        </ul>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-youtube"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-vimeo"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <span class="copyright"> <em>Copyright &copy; 2017.Company name All rights reserved.</em></span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- jQuery -->
+<script src="../static/js/vendor/jquery.js" th:src="@{/js/vendor/jquery.js}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../static/js/vendor/bootstrap.min.js" th:src="@{/js/vendor/bootstrap.min.js}"></script>
+
+<!-- Plugin JavaScript -->
+<script src="../static/js/vendor/jquery.easing.min.js" th:src="@{/js/vendor/jquery.easing.min.js}"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="../static/js/vendor/jqBootstrapValidation.js" th:src="@{/js/vendor/jqBootstrapValidation.js}"></script>
+<script src="../static/js/vendor/contact_me.js" th:src="@{/js/vendor/contact_me.js}"></script>
+<script src="../static/js/vendor/owl.carousel.min.js" th:src="@{/js/vendor/owl.carousel.min.js}"></script>
+<script src="../static/js/vendor/prettify.js" th:src="@{/js/vendor/prettify.js}"></script>
+<script type="text/javascript" src="../static/js/vendor/css3-animate-it.js" th:src="@{/js/vendor/css3-animate-it.js}" ></script>
+
+<!-- Theme JavaScript -->
+<script src="../static/js/vendor/agency.min.js" th:src="@{/js/vendor/agency.min.js}"></script>
+<script src="../static/js/vendor/jquery.mixitup.js" th:src="@{/js/vendor/jquery.mixitup.js}"></script>
+<script src="../static/js/vendor/wow.min.js" th:src="@{/js/vendor/wow.min.js}"></script>
+<!---<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="js/vendor/gmaps.js"></script>--->
+<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

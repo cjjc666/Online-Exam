@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Course</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="main">
+    <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+        <caption><p th:text="${msg}"></p></caption>
+        <thead>
+        <tr class="active">
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Update Course</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="success">
+            <!--<td><p th:text="${couinfo.cid}"></td>
+            <td><P th:text="${couinfo.cname}"></td>
+            <td><a href="#" th:href="@{'/up'}"></a>Update</td>-->
+            <form method="post" th:object="${couinfo}" th:action="@{/teacher/update}">
+                <td><input name="cid" type="number" th:value="*{cid}"></td>
+                <td><input name="cname" type="text" th:value="*{cname}"></td>
+                <input name="id" type="hidden" th:value="*{id}">
+                <td><input type="submit" value="Update" onclick="return confirm('Are you sure to update this course information?')"></td>
+            </form>
+        </tr>
+        <!--<tr class="warning">
+            <td>Sachin</td>
+            <td>Mumbai</td>
+            <td>400003</td>
+        </tr>
+        <tr class="danger">
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+        </tr>-->
+        </tbody>
+    </table>
+
+
+</div>
+
+<script  src="../static/js/Lscript.js" th:src="@{/js/Lscript.js}"></script>
+
+</body>
+</html>
+

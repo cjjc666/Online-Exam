@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Questions</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<div class="main">
+    <div class="container b-container" id="b-container">
+        <form class="form" name="rform" id="b-form" method="post" th:action="@{/teacher/addques}">
+            <h2 class="form_title title">Add Question</h2>
+            <div class="form__icons">
+                <img class="form__icon" th:src="@{/img/3.svg}" src="../static/img/3.svg">
+            </div>
+            <span class="form__span"><p th:text="${msg}"></p></span>
+            <textarea cols="30" rows="5" name="content">Question Content</textarea>
+            <input class="form__input" name="answer" type="text" placeholder="Question Answer" required="required">
+            <input class="form__input" name="cid" type="text" placeholder="Course ID" required="required">
+            <input class="form__input" name="cname" type="text" placeholder="Course Name" required="required">
+            <!--<input class="form__input" name="role" type="radio" checked="checked" required="required">
+            <input class="form__input" name="role" type="radio"  required="required"1>
+            <a class="form__link" th:href="@{'/tech'}">Forget the password?</a>
+            <a class="form__link"><input name="role" id="r" type="submit" formaction="@{/teacher/login}">Is it a teacher?</a>-->
+            <!--<button class="form__button button submit">Login</button>-->
+            <input type="submit" class="button" value="Add" >
+        </form>
+    </div>
+</div>
+
+<script  src="../static/js/Lscript.js" th:src="@{/js/Lscript.js}"></script>
+
+</body>
+</html>
+

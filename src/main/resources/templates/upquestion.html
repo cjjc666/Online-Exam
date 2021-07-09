@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Questions</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="main">
+    <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+        <caption><p th:text="${msg}"></p></caption>
+        <thead>
+        <tr class="active">
+            <th>Question Content</th>
+            <th>Question Answer</th>
+            <th>Update Question</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="success">
+            <!--<td><p th:text="${couinfo.cid}"></td>
+            <td><P th:text="${couinfo.cname}"></td>
+            <td><a href="#" th:href="@{'/up'}"></a>Update</td>-->
+            <form method="post" th:object="${quesinfo}" th:action="@{/teacher/updateques}">
+                <td><input name="content" type="text" th:value="*{content}"></td>
+                <td><input name="answer" type="text" th:value="*{answer}"></td>
+                <input name="qid" type="hidden" th:value="*{qid}">
+                <input name="couid" type="hidden" th:value="*{couid}">
+                <td><input type="submit" value="Update" onclick="return confirm('Are you sure to update this question information?')"></td>
+            </form>
+        </tr>
+        <!--<tr class="warning">
+            <td>Sachin</td>
+            <td>Mumbai</td>
+            <td>400003</td>
+        </tr>
+        <tr class="danger">
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+        </tr>-->
+        </tbody>
+    </table>
+
+
+</div>
+
+<script  src="../static/js/Lscript.js" th:src="@{/js/Lscript.js}"></script>
+
+</body>
+</html>
+
